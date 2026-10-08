@@ -1,0 +1,218 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="NovaStore: uma experiência moderna de compras online.">
+  <meta name="theme-color" content="#171b2c">
+  <title>NovaStore | Seu estilo, suas escolhas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="announcement">
+    ✦ Descubra novidades para transformar seu dia a dia
+  </div>
+
+  <header class="site-header">
+    <div class="container header-content">
+      <a href="#inicio" class="logo" aria-label="NovaStore, início">
+        NOVA<span>STORE.</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Navegação principal">
+        <a href="#inicio">Início</a>
+        <a href="#produtos">Produtos</a>
+        <a href="#beneficios">Vantagens</a>
+      </nav>
+
+      <button class="cart-trigger" id="openCart" type="button"
+        aria-label="Abrir carrinho de compras"
+        aria-controls="cartDrawer" aria-expanded="false">
+        <span aria-hidden="true">🛍</span>
+        Carrinho
+        <span id="cartCount" class="cart-count">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <span class="eyebrow">CURADORIA ESPECIAL</span>
+          <h1>Escolhas que fazem a <em>diferença.</em></h1>
+          <p>
+            Produtos selecionados para deixar sua rotina
+            mais prática, bonita e cheia de personalidade.
+          </p>
+          <a href="#produtos" class="btn btn-primary">
+            Explorar coleção <span aria-hidden="true">↗</span>
+          </a>
+          <div class="hero-note">
+            <span>✦</span> Design, praticidade e inspiração
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-orbit orbit-one"></div>
+          <div class="hero-orbit orbit-two"></div>
+          <div class="hero-center">N<span>✦</span></div>
+          <div class="floating-label label-one">ESTILO</div>
+          <div class="floating-label label-two">NOVIDADES</div>
+          <div class="hero-caption">THE EVERYDAY EDIT — 2026</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="benefits" id="beneficios">
+      <div class="container benefits-grid">
+        <div class="benefit">
+          <span class="benefit-icon">✦</span>
+          <div>
+            <strong>Seleção especial</strong>
+            <p>Produtos escolhidos com cuidado</p>
+          </div>
+        </div>
+        <div class="benefit">
+          <span class="benefit-icon">◇</span>
+          <div>
+            <strong>Experiência intuitiva</strong>
+            <p>Encontre o que procura facilmente</p>
+          </div>
+        </div>
+        <div class="benefit">
+          <span class="benefit-icon">♡</span>
+          <div>
+            <strong>Seus favoritos</strong>
+            <p>Monte sua seleção de produtos</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="products-section" id="produtos">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">EXPLORE A COLEÇÃO</span>
+            <h2>Descubra seus próximos <em>favoritos.</em></h2>
+          </div>
+          <p>Uma seleção pensada para diferentes momentos.</p>
+        </div>
+
+        <div class="shop-toolbar">
+          <label class="search-field" for="searchInput">
+            <span aria-hidden="true">⌕</span>
+            <input type="search" id="searchInput"
+              placeholder="Buscar produtos..."
+              autocomplete="off">
+          </label>
+
+          <label class="sort-field" for="sortSelect">
+            <span>Ordenar por</span>
+            <select id="sortSelect">
+              <option value="featured">Destaques</option>
+              <option value="price-asc">Menor preço</option>
+              <option value="price-desc">Maior preço</option>
+              <option value="name">Nome A–Z</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="category-filters" id="categoryFilters"
+          role="group" aria-label="Filtrar por categoria">
+          <button type="button" class="filter-btn active"
+            data-category="todos" aria-pressed="true">Todos</button>
+          <button type="button" class="filter-btn"
+            data-category="tecnologia" aria-pressed="false">Tecnologia</button>
+          <button type="button" class="filter-btn"
+            data-category="casa" aria-pressed="false">Casa</button>
+          <button type="button" class="filter-btn"
+            data-category="acessorios" aria-pressed="false">Acessórios</button>
+          <button type="button" class="filter-btn"
+            data-category="lifestyle" aria-pressed="false">Lifestyle</button>
+        </div>
+
+        <div class="results-bar">
+          <p id="resultsCount" aria-live="polite">Carregando produtos...</p>
+        </div>
+
+        <div class="products-grid" id="productsGrid"></div>
+
+        <div class="empty-state" id="emptyState" hidden>
+          <span aria-hidden="true">⌕</span>
+          <h3>Nenhum produto encontrado</h3>
+          <p>Tente pesquisar outro nome ou categoria.</p>
+          <button class="btn btn-primary" id="clearFilters" type="button">
+            Limpar filtros
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="newsletter">
+      <div class="container newsletter-inner">
+        <div>
+          <span class="eyebrow">UMA EXPERIÊNCIA DIFERENTE</span>
+          <h2>Seu próximo favorito está aqui.</h2>
+          <p>Explore nossa coleção e encontre algo especial.</p>
+        </div>
+        <a href="#produtos" class="btn btn-light">Ver coleção ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div>
+        <a href="#inicio" class="logo">NOVA<span>STORE.</span></a>
+        <p>Uma vitrine de possibilidades.</p>
+      </div>
+      <div class="footer-right">
+        <span>Projeto demonstrativo de e-commerce</span>
+        <span>Desenvolvido por Thays Nunes © 2026</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="cart-overlay" id="cartOverlay" hidden></div>
+
+  <aside class="cart-drawer" id="cartDrawer"
+    role="dialog" aria-modal="true"
+    aria-labelledby="cartTitle" aria-hidden="true">
+    <div class="cart-header">
+      <div>
+        <span class="eyebrow">SUAS ESCOLHAS</span>
+        <h2 id="cartTitle">Meu carrinho</h2>
+      </div>
+      <button class="icon-button" id="closeCart"
+        type="button" aria-label="Fechar carrinho">×</button>
+    </div>
+
+    <div class="cart-items" id="cartItems"></div>
+
+    <div class="cart-footer">
+      <div class="cart-subtotal">
+        <span>Subtotal</span>
+        <strong id="cartSubtotal">R$ 0,00</strong>
+      </div>
+      <p>Valores demonstrativos. Frete e pagamento não disponíveis.</p>
+      <button class="btn btn-primary checkout-btn"
+        id="checkoutButton" type="button" disabled>
+        Finalizar pedido
+      </button>
+      <button class="clear-cart" id="clearCart" type="button">
+        Esvaziar carrinho
+      </button>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast" role="status"
+    aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>
